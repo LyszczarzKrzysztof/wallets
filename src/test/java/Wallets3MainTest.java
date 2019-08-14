@@ -108,19 +108,22 @@ public class Wallets3MainTest {
 
     @ParameterizedTest
     @CsvSource({"370,100,PLN","37,10,PLN","7400,2000,PLN","95,100,EUR","19,20,EUR"})
-    public void makeUSDTest(String string, String string2, String string3){
-        Money moneytest1 = new Money(new BigDecimal(Integer.parseInt(string)),Currency.valueOf(string3));
-        Money moneytest2 = new Money(new BigDecimal(Integer.parseInt(string2)),Currency.USD);
+    public void makeUSDTest (String string, String string2, String string3) {
+        Money moneytest1 = new Money(new BigDecimal(Float.parseFloat(string)),Currency.valueOf(string3));
+        Money moneytest2 = new Money(new BigDecimal(Float.parseFloat(string2)),Currency.USD);
 
         List<Money> list1 = new ArrayList<>();
 
         list1.add(moneytest1);
 
-
         Offer offertest1 = new Offer("morele",list1);
 
+        System.out.println(offertest1.makeUSD(moneytest1));
 
-        assertEquals(moneytest2.getAmount(), offertest1.makeUSD(moneytest1).getAmount());
-        //logger.info(""+moneytest1+moneytest2);
+
+            assertEquals(moneytest2.getAmount().setScale(2,BigDecimal.ROUND_HALF_EVEN), offertest1.makeUSD(list1.get(0)).getAmount());
+            //logger.info(""+moneytest1+moneytest2);
+
     }
+
 }

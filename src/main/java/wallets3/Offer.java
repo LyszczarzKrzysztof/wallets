@@ -27,14 +27,13 @@ public class Offer {
 
     public Money makeUSD( Money money) {
 
-        Money money1= new Money(money.getAmount().multiply(money.getMapOfCurrencyRates().get(money.getCurrency())), Currency.USD);
+            Money money1 = new Money(money.getAmount().multiply(money.getMapOfCurrencyRates().get(money.getCurrency()))
+                    .setScale(2,BigDecimal.ROUND_HALF_EVEN), Currency.USD);
+            if (money.getCurrency().equals(Currency.USD)) {
+                return money;
+            }
 
-
-        if (money.getCurrency().equals(Currency.USD)) {
             return money1;
-        }
-
-        return money;
     }
 
 

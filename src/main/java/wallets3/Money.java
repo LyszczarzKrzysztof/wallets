@@ -4,6 +4,7 @@ import wallets3.exception.JestesBiednyException;
 import wallets3.exception.NieTaWalutaException;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Money {
@@ -11,19 +12,18 @@ public class Money {
     private BigDecimal amount;
     private Currency currency;
 
-    private BigDecimal USDtoPLN = new BigDecimal(1/3.70);
-    private BigDecimal USDtoEUR = new BigDecimal(1/0.95);
+    private static final BigDecimal USDtoPLN = new BigDecimal(1/3.70);
+    private static final BigDecimal USDtoEUR = new BigDecimal(1/0.95);
 
-    private Map<Currency, BigDecimal> mapOfCurrencyRates;
+    private static final Map<Currency, BigDecimal> mapOfCurrencyRates = new HashMap<>();
 
-    public Map<Currency, BigDecimal> setMapOfCurrencyRates(){
+    static {
         mapOfCurrencyRates.put(Currency.PLN, USDtoPLN);
         mapOfCurrencyRates.put(Currency.EUR, USDtoEUR);
-
-        return mapOfCurrencyRates;
     }
 
-    public Map<Currency, BigDecimal> getMapOfCurrencyRates() {
+
+    public static Map<Currency, BigDecimal> getMapOfCurrencyRates() {
         return mapOfCurrencyRates;
     }
 
@@ -76,4 +76,13 @@ public class Money {
     public Currency getCurrency() {
         return currency;
     }
+
+    public BigDecimal getUSDtoPLN() {
+        return USDtoPLN;
+    }
+
+    public BigDecimal getUSDtoEUR() {
+        return USDtoEUR;
+    }
+
 }

@@ -101,5 +101,6 @@ public class Wallets3Main {
         logger.info("osoba 2 po sprzedazy:"+personBuyingSelling2);
 
         //logger.info("Handlarz 1: {}"+personBuyingSelling1);
+
     }
 }
