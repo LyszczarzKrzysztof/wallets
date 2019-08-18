@@ -92,10 +92,9 @@ public class Wallets3Main {
 
         logger.info("Za ile sprzeda: "+personBuyingSelling1.howMuchDoYouWantForThis(offer1.getStuff()));
 
-        personBuyingSelling1.sell(personBuyingSelling2,offer1.getStuff(),listOfPrices1.get(0));
-        personBuyingSelling1.giveStuffToPerson(personBuyingSelling2,offer1);
+
         personBuyingSelling2.buy(personBuyingSelling1,offer1,listOfPrices1.get(0));
-        personBuyingSelling2.payToPerson(personBuyingSelling1,listOfPrices1.get(0));
+
 
         logger.info("osoba 1 po sprzedaza:"+personBuyingSelling1);
         logger.info("osoba 2 po sprzedazy:"+personBuyingSelling2);

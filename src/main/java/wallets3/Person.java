@@ -84,6 +84,7 @@ public class Person {
 
     public void giveStuffToPerson(Person buyer, Offer offer) {
         this.listForSale.remove(this.listForSale.indexOf(offer));
+        buyer.getStuff(offer.getStuff());
     }
 
     public void getStuff(String stuff) {
@@ -93,15 +94,17 @@ public class Person {
     public void buy(Person seller, Offer offer, Money money) {
         if (this.listToBuy.contains(offer)) {
             this.listToBuy.remove(this.listToBuy.indexOf(offer));
+            payToPerson(seller,money);
+            seller.sell(this,offer,money);
         } else {
             logger.warn("You dont need this");
         }
     }
 
-    public void sell(Person buyer, String stuff, Money money) {
-        if (this.listOfStuff.contains(stuff)) {
-            this.listOfStuff.remove(this.listOfStuff.indexOf(stuff));
-            buyer.getStuff(stuff);
+    public void sell(Person buyer, Offer offer, Money money) {
+        if (this.listOfStuff.contains(offer.getStuff())) {
+            this.listOfStuff.remove(this.listOfStuff.indexOf(offer.getStuff()));
+            giveStuffToPerson(buyer,listForSale.get(listForSale.indexOf(offer)));
         } else {
             logger.warn("You dont have this kind of stuff to sell!");
         }
