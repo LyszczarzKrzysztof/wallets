@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class Wallets3MainTest {
     @ParameterizedTest
     @ValueSource(ints = {1001,1200,4000,5000})
-    public void insufficientFunds(int number){
+    public void insufficientFunds(int number) throws JestesBiednyException {
 
         Money moneytest1 = new Money(new BigDecimal(1000),Currency.PLN);
         Money moneytest2 = new Money(new BigDecimal(200),Currency.PLN);
@@ -43,7 +43,7 @@ public class Wallets3MainTest {
 
     @ParameterizedTest
     @ValueSource(ints = {1000,999,100,1,0,753})
-    public void sufficientFunds(int liczba){
+    public void sufficientFunds(int liczba) throws JestesBiednyException {
 
         Money moneytest1 = new Money(new BigDecimal(1000),Currency.PLN);
         Money moneytest2 = new Money(new BigDecimal(200),Currency.PLN);

@@ -50,6 +50,7 @@ public class Person {
             person.acceptMoneyFromAnyone(money);
         } catch (JestesBiednyException e) {
             logger.warn("Nie stać Cię!");
+
         } catch (NieTaWalutaException e) {
             logger.warn("Nie ta waluta");
         }
@@ -92,13 +93,14 @@ public class Person {
     }
 
     public void buy(Person seller, Offer offer, Money money) {
-        if (this.listToBuy.contains(offer)) {
-            this.listToBuy.remove(this.listToBuy.indexOf(offer));
-            payToPerson(seller,money);
-            seller.sell(this,offer,money);
-        } else {
-            logger.warn("You dont need this");
-        }
+
+            if (this.listToBuy.contains(offer)) {
+                this.listToBuy.remove(this.listToBuy.indexOf(offer));
+                payToPerson(seller, money);
+                seller.sell(this, offer, money);
+            } else {
+                logger.warn("You dont need this");
+            }
     }
 
     public void sell(Person buyer, Offer offer, Money money) {

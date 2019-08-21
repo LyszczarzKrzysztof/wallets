@@ -2,6 +2,7 @@ package wallets3;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import wallets3.exception.JestesBiednyException;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ public class Wallets3Main {
 
     public static void log(String text){System.out.println(text);}
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws JestesBiednyException {
 
 
 
